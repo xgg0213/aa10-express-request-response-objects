@@ -106,6 +106,24 @@ app.get('/info', (req, res) => {
  */
 // Your code here 
 
+app.post('/movies', (req, res) => {
+    const {name, year, favorite} = req.body;
+    let isFavorite;
+
+    if (favorite) { isFavorite = true}
+    else {isFavorite = false}
+    
+    const id = Math.floor(Math.random() * 1000)
+
+    const newMovie = {
+        id: id,
+        name: name,
+        year: Number(year),
+        isFavorite: isFavorite
+    }
+    res.json(newMovie)
+})
+
 /**
  *  Advanced Bonus Phase B - Research how to return static
  *                           files in a public folder
@@ -122,6 +140,7 @@ app.get('/info', (req, res) => {
  *      Test route: /logo.png
  */
 // Your code here 
+
 
 // DO NOT EDIT - Set port and listener
 if (require.main === module) {
